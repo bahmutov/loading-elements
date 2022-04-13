@@ -8,6 +8,10 @@ Cypress.Commands.add('invisibleInViewport', (selector) => {
 
     cy.get(selector).should(($el) => {
       $el.each((k, el) => {
+        if (!Cypress.dom.isAttached(el)) {
+          return
+        }
+
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
         const rect = el.getBoundingClientRect()
 
@@ -23,10 +27,15 @@ Cypress.Commands.add('invisibleInViewport', (selector) => {
           // the element is outside the viewport horizontally
           return
         }
-        expect(el, `loader ${k + 1}`).to.not.be.visible
+
+        if (Cypress.dom.isVisible(el)) {
+          throw new Error(`loader ${k + 1} is visible`)
+        }
       })
     })
   })
+
+  cy.log(`${selector} is invisible in viewport`)
 })
 
 it('checks if the loading element is visible within the current viewport', () => {
@@ -37,5 +46,8 @@ it('checks if the loading element is visible within the current viewport', () =>
   cy.invisibleInViewport('.loading')
 
   cy.scrollTo('bottom', { duration: 500 })
+  // there is one more loading element visible here
+  cy.get('.loading:visible').should('have.length', 1)
+  // then the last loading element goes away
   cy.invisibleInViewport('.loading')
 })

@@ -1,5 +1,5 @@
-const loading1 = document.querySelector('#page1 .loading')
-const loading2 = document.querySelector('#page2 .loading')
+const [loading1, loading2] = document.querySelectorAll('#page1 .loading')
+const loading3 = document.querySelector('#page2 .loading')
 
 setTimeout(() => {
   console.log('hiding the first loading element')
@@ -9,4 +9,9 @@ setTimeout(() => {
 setTimeout(() => {
   console.log('removing the second loading element')
   loading2.parentNode.removeChild(loading2)
-}, 4000)
+}, 3000)
+
+setTimeout(() => {
+  console.log('removing the third loading element')
+  loading3.parentNode.removeChild(loading3)
+}, 4500)
