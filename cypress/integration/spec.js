@@ -1,9 +1,13 @@
 /// <reference types="cypress" />
 
-// SKIP: shows the failing assertion
-it.skip('the second loading element never goes away', () => {
+it('loads', { viewportHeight: 2000 }, () => {
   cy.visit('public/index.html')
-  // at first, both loading elements are visible
+})
+
+// SKIP: shows the failing assertion
+it.skip('the loading element below the fold never goes away', () => {
+  cy.visit('public/index.html')
+  // at first, all loading elements are visible
   cy.get('.loading').should('have.length', 3).and('be.visible')
   // the loaders on the first page disappear
   // but the loader on the second page is still visible
