@@ -14,4 +14,4 @@ setTimeout(() => {
 setTimeout(() => {
   console.log('removing the third loading element')
   loading3.parentNode.removeChild(loading3)
-}, 4500)
+}, 5000)

@@ -19,11 +19,11 @@ Cypress.Commands.add('invisibleInViewport', (selector) => {
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
         const rect = el.getBoundingClientRect()
 
-        if (rect.top < 0 || rect.bottom > innerHeight) {
+        if (rect.bottom < 0 || rect.top > innerHeight) {
           // the element is outside the viewport vertically
           return
         }
-        if (rect.left < 0 || rect.right > innerWidth) {
+        if (rect.right < 0 || rect.left > innerWidth) {
           // the element is outside the viewport horizontally
           return
         }

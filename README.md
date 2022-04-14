@@ -6,4 +6,4 @@ See [support.js](./cypress/support/index.js) and [spec2.js](./cypress/integratio
 
 ![Checking the loading elements in the current viewport](./images/loading.gif)
 
-Read the blog post [Elements Visible In The Current Viewport](https://glebbahmutov.com/blog/visible-in-the-viewport/).
+Read the blog post [Elements Visible In The Current Viewport](https://glebbahmutov.com/blog/visible-in-the-viewport/) and watch the video [Check Visible Elements In The Current Viewport](https://youtu.be/XLgwQsSa9PM).
